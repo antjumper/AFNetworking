@@ -925,9 +925,15 @@ didBecomeInvalidWithError:(NSError *)error
 didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge
  completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential *credential))completionHandler
 {
+    //挑战类型是默认的
+    
+    //NSURLSessionAuthChallengePerformDefaultHandling  默认方式
+    // NSURLSessionAuthChallengeUseCredential  使用指定的证书
+    //NSURLSessionAuthChallengeCancelAuthenticationChallenge：取消挑战
+    
     NSURLSessionAuthChallengeDisposition disposition = NSURLSessionAuthChallengePerformDefaultHandling;
     __block NSURLCredential *credential = nil;
-
+//sessionDidReceiveAuthenticationChallenge 自定义挑战的block
     if (self.sessionDidReceiveAuthenticationChallenge) {
         disposition = self.sessionDidReceiveAuthenticationChallenge(session, challenge, &credential);
     } else {
