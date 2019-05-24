@@ -43,6 +43,8 @@ typedef NSString * (^AFQueryStringSerializationBlock)(NSURLRequest *request, id 
  should be percent-escaped in the query string.
     - parameter string: The string to be percent-escaped.
     - returns: The percent-escaped string.
+ 
+ 将一个string转化成url编码 就是百分号编码
  */
 NSString * AFPercentEscapedStringFromString(NSString *string) {
     static NSString * const kAFCharactersGeneralDelimitersToEncode = @":#[]@"; // does not include "?" or "/" due to RFC 3986 - Section 3.4
